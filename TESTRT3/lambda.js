@@ -24,7 +24,8 @@ exports.handler = function (event, context, callback) {
 			"Body": image,
 			"Bucket": "runrt.images",
 			"Key": objectKey,
-			"ACL": "public-read"
+			"ACL": "public-read",
+			"ContentType":"image/jpeg"
 		})
 			.promise()
 			.then(data => {
