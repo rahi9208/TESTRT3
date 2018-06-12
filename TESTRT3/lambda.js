@@ -22,7 +22,7 @@ exports.handler = function (event, context, callback) {
 	}, function (err, data) {
 		s3.putObject({
 			"Body": image,
-			"Bucket": "testrtx.images",
+			"Bucket": "mybucketx.demo",
 			"Key": objectKey,
 			"ACL": "public-read",
 			"ContentType": "image/jpeg"
