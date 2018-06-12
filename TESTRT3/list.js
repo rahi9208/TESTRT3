@@ -5,12 +5,12 @@ exports.handler = function (event, context, callback) {
 		"isBase64Encoded": 1,
 		"statusCode": 200,
 		"headers": {
-			"headerName": "headerValue"
+			"Access-Control-Allow-Origin": "*"
 		},
 		"body": "..."
 	};
 
-	let itemType = "VEG";
+	let itemType = event.queryStringParameters.type;
 	ddb.scan({
 		TableName: 'TestRT3', ExpressionAttributeValues: { ':it': itemType }, FilterExpression: 'itemType = :it'
 	}, function (err, data) {
