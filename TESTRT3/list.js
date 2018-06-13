@@ -25,7 +25,7 @@ exports.handler = function (event, context, callback) {
 		} else {
 			response.statusCode = 404;
 		}
-		callback(null, response);
+		callback( response);
 	});
 
 
