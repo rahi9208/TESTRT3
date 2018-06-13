@@ -13,7 +13,7 @@ exports.handler = function (event, context, callback) {
 		return;
 	}
 
-	let image = Buffer.from(event.itemImage,"base64");
+	let image = Buffer.from(event.itemImage, "base64");
 	let objectKey = event.itemCode + ".jpg";
 
 	ddb.put({
@@ -22,17 +22,17 @@ exports.handler = function (event, context, callback) {
 	}, function (err, data) {
 		s3.putObject({
 			"Body": image,
-			"Bucket": "runrt.images",
+			"Bucket": "myimages.demo",
 			"Key": objectKey,
 			"ACL": "public-read",
-			"ContentType":"image/jpeg"
+			"ContentType": "image/jpeg"
 		})
 			.promise()
 			.then(data => {
-				callback(null,"Successfully persisted");
+				callback(null, "Successfully persisted");
 			})
 			.catch(err => {
-				callback(err,null); 
+				callback(err, null);
 			});
 
 	});
